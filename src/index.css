@@ -4,7 +4,24 @@
 
 :root {
   --primary-color: white;
-  --secondary-color: #1B3222;
+  --secondary-color: #1b3222;
   --tertiary-color: #008136;
-  --quaternary-color: #FFC53C;
+  --quaternary-color: #ffc53c;
+}
+@layer base {
+  @font-face {
+    font-family: "Sacramento";
+    src: url("src/assets/fonts/Sacramento.ttf");
+  }
+
+  @font-face {
+    font-family: "Raleway";
+    src: url("src/assets/fonts/Raleway.ttf");
+  }
+
+  html {
+    /* font-family: "Raleway"; */
+    font-size: 16px;
+    line-height: 1.5;
+  }
 }

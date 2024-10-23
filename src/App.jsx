@@ -1,5 +1,11 @@
+import ClientSpace from "./pages/ClientSpace";
+
 function App() {
-  return <></>;
+  return (
+    <>
+      <ClientSpace />
+    </>
+  );
 }
 
 export default App;
