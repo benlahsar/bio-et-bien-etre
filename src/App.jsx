@@ -3,6 +3,8 @@ import ClientSpace from "./pages/ClientSpace";
 import MyAccount from './pages/MyAccount';
 import MyFavourites from './pages/MyFavourites';
 import MyCart from './pages/MyCart';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
         <Route path="/account" element={<MyAccount />} />
         <Route path="/favorite" element={<MyFavourites />} />
         <Route path="/cart" element={<MyCart />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </Router>
   );
