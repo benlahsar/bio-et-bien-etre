@@ -1,5 +1,24 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ClientSpace from "./pages/ClientSpace";
+import MyAccount from './pages/MyAccount';
+import MyFavourites from './pages/MyFavourites';
+import MyCart from './pages/MyCart';
+import Login from './pages/Login';
+import Register from './pages/Register';
+
 function App() {
-  return <h1>Hello dev 111</h1>;
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<ClientSpace />} />
+        <Route path="/account" element={<MyAccount />} />
+        <Route path="/favorite" element={<MyFavourites />} />
+        <Route path="/cart" element={<MyCart />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;
