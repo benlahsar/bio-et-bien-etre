@@ -16,6 +16,9 @@ function App() {
         <Route path="/cart" element={<MyCart />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/hos_huiles" element={<NosHuiles/>}/>
+        <Route path="/huiles_naturelles" element={<HuileNaturelle/>}/>
+        <Route path="/huiles_bio" element={<HuileBio/>}/>
       </Routes>
     </Router>
   );
