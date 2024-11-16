@@ -1,21 +1,10 @@
-# Git commands
+BIO ET BIEN ETRE
 
-## Commands to push changes to remote repository
+Welcome to BIO ET BIEN ETRE, your go-to destination for high-quality, organic oils tailored for health, wellness, and culinary excellence. Our mission is to bring you the finest natural oils that enrich your lifestyle, promote well-being, and elevate your everyday experiences.
+🌱 About Us
 
-git add . => to add all the changes to the staging area
+At BIO ET BIEN ETRE, we believe in the power of nature. We source our oils from trusted, sustainable producers to ensure every product meets the highest standards of quality and purity. Whether you're looking for essential oils for aromatherapy, carrier oils for skincare, or gourmet oils for your kitchen, we’ve got you covered.
+🛍️ What We Offer
 
-git status => to check the status of the repository
-
-git commit -m "commit message" => to commit the changes to the local repository
-
-git push origin master => to push the changes to the remote repository
-
-## Create a new branch and switch to it
-
-git branch new-branch-name => to create a new branch
-
-git checkout new-branch-name => to switch to the new branch
-
-## Pull changes from remote repository to local repository
-
-git pull origin master => to pull the changes from the remote repository to the local repository
+    Essential Oils: Pure, therapeutic-grade oils for relaxation, focus, and holistic health.
+    Carrier Oils: Perfect for
