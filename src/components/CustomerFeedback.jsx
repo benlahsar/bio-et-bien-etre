@@ -1,30 +1,42 @@
-import React from 'react';
-import img2 from '../assets/img2.jpg';
+import React from "react";
+import img11 from "../assets/img11.jpg";
+import img12 from "../assets/img12.jpg";
+import img13 from "../assets/img13.jpg";
+import img14 from "../assets/img14.jpg";
+import img15 from "../assets/img15.jpg";
+import img16 from "../assets/img16.jpg";
+
+const feedbacks = [
+  { image: img11, text: "Lorem ipsum dolor sit amet...", name: "SANA - Manager" },
+  { image: img12, text: "Repellendus, quia ipsa sunt...", name: "AMIN - Client" },
+  { image: img13, text: "Fantastic product!", name: "ZINEB - Developer" },
+  { image: img14, text: "Great experience!", name: "ABD ERRAHMAN - Designer" },
+  { image: img15, text: "Best purchase!", name: "NIZAR - Entrepreneur" },
+  { image: img16, text: "Wonderful service!", name: "SALMA- Teacher" },
+  
+];
 
 const CustomerFeedback = () => {
   return (
-
-    <section className="text-center py-12 bg-white text-[#6C8E6D]-800">
-    < div className="bg-primary py-20 px-8 flex flex-col items-center max-w-lg mx-auto">
-        <h2 className="text-4xl font-cursive text-secondary -800 mb-6">Customer Feedback</h2>
-        
-        <div className="flex flex-col items-center md:flex-row md:items-start md:space-x-8">
-          <img 
-            src={img2} 
-            alt="Customer" 
-            className="w-80 h-50 border-2 border-gray-300 mb-4 md:mb-0"
-          />
-          
-          <div className="text-center md:text-left">
-            <p className="text-gray-600 mb-4">
-             Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, quia ipsa sunt et iusto recusandae ut accusamus, voluptate possimus dolores eum eveniet sed explicabo tempora numquam reprehenderit distinctio. Quo alias animi esse ea corporis modi impedit maxime dolore fugiat dignissimos totam incidunt, iste, reiciendis molestiae natus fuga illo. Dolorem, iusto.
-            </p>
-            <p className="text-gray-800 font-semibold">Andros - Manager</p>
+    <div className="bg-primary-300 py-10 overflow-hidden relative">
+      <h1 className="text-2xl font-bold text-center mb-6">Customer Feedback</h1>
+      <div className="animate-horizontal-scroll">
+        {feedbacks.map((feedback, index) => (
+          <div
+            key={index}
+            className="bg-primary-400 p-6 rounded-md shadow-lg text-center mx-2 min-w-[250px]"
+          >
+            <img
+              src={feedback.image}
+              alt={feedback.name}
+              className="w-24 h-24 mx-auto rounded-full mb-4"
+            />
+            <p className="text-gray-700 mb-4">{feedback.text}</p>
+            <p className="font-semibold text-gray-900">{feedback.name}</p>
           </div>
-        </div>
+        ))}
       </div>
-  </section>
- 
+    </div>
   );
 };
 
