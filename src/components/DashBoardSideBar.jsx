@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { FaUser, FaHeart, FaShoppingCart, FaSignOutAlt } from "react-icons/fa";
 
 export default function DashBoardSideBar() {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -28,43 +29,34 @@ export default function DashBoardSideBar() {
     navigate(path);
   };
 
+  const menuItems = [
+    { id: 0, label: "My Account", path: "/account", icon: <FaUser /> },
+    { id: 1, label: "My Favorites", path: "/favorite", icon: <FaHeart /> },
+    { id: 2, label: "My Cart", path: "/cart", icon: <FaShoppingCart /> },
+    { id: 3, label: "Logout", path: "", icon: <FaSignOutAlt /> },
+  ];
+
   return (
-    <aside className="w-1/6 bg-white border border-black p-3 mr-10 mt-16">
-      <h1 className="font-['Sacramento'] text-4xl underline mb-4">
-        Dashboard Sidebar
+    <aside className="w-1/5 bg-white shadow-lg rounded-lg p-6 mt-20">
+      <h1 className="text-3xl font-semibold mb-6 text-gray-800">
+        Dashboard
       </h1>
-      <div
-        className={`${
-          activeIndex === 0 ? "bg-blue-500 text-white" : ""
-        } p-2 cursor-pointer`}
-        onClick={() => handleNavigation(0, "/account")}
-      >
-        My account
-      </div>
-      <div
-        className={`${
-          activeIndex === 1 ? "bg-yellow-500 text-white" : ""
-        } p-2 cursor-pointer`}
-        onClick={() => handleNavigation(1, "/favorite")}
-      >
-        My Favorites
-      </div>
-      <div
-        className={`${
-          activeIndex === 2 ? "bg-orange-500 text-white" : ""
-        } p-2 cursor-pointer`}
-        onClick={() => handleNavigation(2, "/cart")}
-      >
-        My Cart
-      </div>
-      <div
-        className={`${
-          activeIndex === 3 ? "bg-destructive text-white" : "bg-white text-destructive"
-        } p-2 cursor-pointer`}
-        onClick={() => handleNavigation(3, "")}
-      >
-        Logout
-      </div>
+      <nav>
+        {menuItems.map((item) => (
+          <div
+            key={item.id}
+            className={`flex items-center gap-4 p-3 rounded-lg text-lg cursor-pointer transition-all duration-300 ${
+              activeIndex === item.id
+                ? "bg-blue-500 text-white"
+                : "text-gray-600 hover:bg-gray-100"
+            }`}
+            onClick={() => handleNavigation(item.id, item.path)}
+          >
+            <div className="text-2xl">{item.icon}</div>
+            <span>{item.label}</span>
+          </div>
+        ))}
+      </nav>
     </aside>
   );
 }

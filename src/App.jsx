@@ -8,6 +8,7 @@ import MyFavourites from './pages/MyFavourites';
 import MyCart from './pages/MyCart';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Home from "./pages/Home";
 
 function App() {
   return (
@@ -20,16 +21,17 @@ function App() {
         <Route path="/Argania" element={<Contents.BlogContent3/>} />
         <Route path="/Revox" element={<Contents.BlogContent4/>} />
         <Route path="/HuileOlive" element={<Contents.BlogContent5/>} />
-        <Route path="/" element={<ClientSpace />} />
+        <Route path="/c" element={<ClientSpace />} />
+        <Route path="/" element={<Home />} />
         <Route path="/account" element={<MyAccount />} />
         <Route path="/favorite" element={<MyFavourites />} />
         <Route path="/cart" element={<MyCart />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/hos_huiles" element={<NosHuiles/>}/>
-        <Route path="/huiles_naturelles" element={<HuileNaturelle/>}/>
+        {/* <Route path="/hos_huiles" element={<NosHuiles/>}/> */}
+        {/* <Route path="/huiles_naturelles" element={<HuileNaturelle/>}/>
         <Route path="/huiles_bio" element={<HuileBio/>}/>
-        <Route path="/huiles_cheveux" element={<HuileCheveux/>}/>
+        <Route path="/huiles_cheveux" element={<HuileCheveux/>}/> */}
         
       </Routes>
     </Router>

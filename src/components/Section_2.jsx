@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import maroc from './assets/maroc.png';
-import huile_essentielle from './assets/huile_essentielle.png';
-import garantie from './assets/garantie.png';
+// import maroc from 'src/assets/images/maroc.png';
+// import huile_essentielle from 'src/assets/images/huile_essentielle.png';
+// import garantie from 'src/assets/images/garantie.png';
 import React from 'react';
 
 export default function Section_2() {
@@ -112,7 +112,7 @@ export default function Section_2() {
       <InformContainer>
         <InformContent>
           <InformImage>
-            <img src={huile_essentielle} alt="Huile essentielle" />
+            <img src={"src/assets/images/huile_essentielle.png"} alt="Huile essentielle" />
           </InformImage>
           <InformText>
             Huiles essentielles bio, soigneusement sélectionnées pour votre bien-être.
@@ -121,7 +121,7 @@ export default function Section_2() {
 
         <InformContent>
           <InformImage>
-            <img src={garantie} alt="Produit Garantie" />
+            <img src={"src/assets/images/garantie.png"} alt="Produit Garantie" />
           </InformImage>
           <InformText>
             Garantie de qualité pour des produits naturels et écoresponsables.
@@ -130,7 +130,7 @@ export default function Section_2() {
 
         <InformContent>
           <InformImage>
-            <img src={maroc} alt="Drapeau Maroc" />
+            <img src={"src/assets/images/maroc.png"} alt="Drapeau Maroc" />
           </InformImage>
           <InformText>
             Entreprise marocaine dynamique et flexible, à votre service et à votre écoute !

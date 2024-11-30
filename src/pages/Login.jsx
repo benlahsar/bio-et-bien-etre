@@ -1,19 +1,25 @@
 import React, { useState } from "react";
-import api from "../api/auth";
+import api, { getCSRFToken } from "../api/auth";
+import { LockKeyhole, AtSign } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 // import bgImage from "./assets/bg.png";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+
   const login = async (e) => {
     e.preventDefault();
+    await getCSRFToken();
     try {
       const response = await api.post("/login", {
         email,
         password,
       });
-      console.log(response);
+      console.log(response.status);
+      response.status === 204 && navigate("/account");
     } catch (error) {
       console.error(error);
     }
@@ -46,7 +52,7 @@ function Login() {
               onChange={(e) => setEmail(e.target.value)}
             />
             <i className="absolute right-3 top-2 text-white font-normal not-italic">
-              👤
+              <AtSign />
             </i>
           </div>
           <div className="mb-4 relative">
@@ -59,7 +65,7 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
             />
             <i className="absolute right-3 top-2 text-white font-normal not-italic">
-              🔒
+              <LockKeyhole />
             </i>
           </div>
           <div className="flex justify-between items-center text-white text-sm mb-4">
@@ -72,8 +78,8 @@ function Login() {
             </a>
           </div>
           <button
-            type="submit"
             className="w-full bg-green-700 hover:bg-green-900 text-white p-2 rounded-lg font-semibold transition"
+            // onClick={() => navigate("/account")}
           >
             Login
           </button>

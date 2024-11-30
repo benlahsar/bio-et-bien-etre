@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import BioHuile1 from './assets/BioHuile1.webp';
+// import BioHuile1 from "src/assets/images/BioHuile1.webp";
 
 export default function Section_1() {
   const BigContainer = styled.div`
@@ -52,9 +52,9 @@ export default function Section_1() {
     }
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
-      top: 70%; 
+      top: 70%;
       left: 96.1%;
       width: 160px;
       height: 220px;
@@ -66,19 +66,17 @@ export default function Section_1() {
 
       @media (max-width: 768px) {
         width: 70px;
-        height:100px;
-        left:92%;
-        top:70%;
+        height: 100px;
+        left: 92%;
+        top: 70%;
         background-size: contain;
-
       }
 
       @media (max-width: 480px) {
-
-        left:86.1%;
-        top:74%;
-        width:43px;
-        height:66px;
+        left: 86.1%;
+        top: 74%;
+        width: 43px;
+        height: 66px;
         background-size: contain;
       }
     }
@@ -117,8 +115,12 @@ export default function Section_1() {
   `;
 
   const Bienvenue = styled.div`
+    @font-face {
+      font-family: "Amithen";
+      src: url("src/assets/fonts/Amithen.ttf");
+    }
     color: #3ab83c;
-    font-family: 'Brush Script MT', cursive;
+    font-family: "Amithen", cursive;
     font-size: 2rem;
     margin-bottom: 20px;
 
@@ -132,7 +134,7 @@ export default function Section_1() {
   `;
 
   const Bio = styled.span`
-    font-family: 'Brush Script MT', cursive;
+    font-family: "Amithen", cursive;
     font-weight: bold;
     font-size: 1.8rem;
     color: #3ab83c;
@@ -174,13 +176,17 @@ export default function Section_1() {
   `;
 
   const NosHuiles = () => {
-    window.location.href = 'https://www.google.com/search?client=firefox-b-d&q=nizar+baraka';
+    window.location.href =
+      "https://www.google.com/search?client=firefox-b-d&q=nizar+baraka";
   };
 
   return (
     <BigContainer>
       <ImageContainer>
-        <img src={BioHuile1} alt="Huiles Bio et Bien Etre" />
+        <img
+          src={"src/assets/images/BioHuile1.webp"}
+          alt="Huiles Bio et Bien Etre"
+        />
       </ImageContainer>
       <ContentL>
         <Titre>Bio et Bien Être, les Huiles Que je préfère</Titre>
@@ -188,18 +194,22 @@ export default function Section_1() {
           Bienvenue dans le monde des huiles essentielles bio de qualité ! 🌿✨
         </Bienvenue>
         <p>
-          Découvrez notre sélection des meilleures huiles bio pour votre bien-être.
+          Découvrez notre sélection des meilleures huiles bio pour votre
+          bien-être.
         </p>
         <p>
-          Chez <Bio>Bio et Bien Etre</Bio>, nous sommes ravis de vous accueillir dans
-          notre boutique dédiée à votre bien-être et à la nature.
+          Chez <Bio>Bio et Bien Etre</Bio>, nous sommes ravis de vous accueillir
+          dans notre boutique dédiée à votre bien-être et à la nature.
         </p>
-        <ul style={{ listStyle: 'none' }}>
+        <ul style={{ listStyle: "none" }}>
           <li>- Produits certifiés biologiques et écoresponsables.</li>
           <li>- Bienfaits naturels pour votre corps, esprit et maison.</li>
           <li>- Service client passionné et à votre écoute.</li>
         </ul>
-        <p>👉 Explorez nos produits dès aujourd’hui et faites le plein de bien-être !</p>
+        <p>
+          👉 Explorez nos produits dès aujourd'hui et faites le plein de
+          bien-être !
+        </p>
         <NosBtn onClick={NosHuiles}>Découvrez Nos Huiles</NosBtn>
       </ContentL>
     </BigContainer>

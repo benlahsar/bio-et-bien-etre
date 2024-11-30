@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from './Navbar';
 import Footer from './Footer';
 
 const categories = [
@@ -43,8 +42,7 @@ const CategoryCard = ({ name, img, link }) => (
 const Categorie = () => {
   return (
     <>
-      <Navbar />
-      <section className="py-12 bg-secondary">
+      <section className="py-12 bg-gray-500">
         <h2 className="text-center text-3xl font-bold text-primary mb-12">
           NOS CATÉGORIES PRODUITS
         </h2>
