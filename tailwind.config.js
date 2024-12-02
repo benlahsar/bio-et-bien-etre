@@ -1,12 +1,24 @@
-/** @type {import('tailwindcss').Config} */
-export default {
+const { DiBlackberry } = require("react-icons/di");
+
+module.exports = {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
-  },
+    extend: {
+      
+        colors: {
+          primary: "#EFF5F2;",
+          secondary: "#1F23", 
+          third: "black",
+          fourth:" #a2c3b0",  
+        },  
+      },
+      fontFamily: {
+        raleway: ["Raleway", "sans-serif"],  
+      },
+    },
+ 
   plugins: [],
-}
-
+};

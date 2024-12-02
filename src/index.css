@@ -2,9 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --primary-color: white;
-  --secondary-color: #1B3222;
-  --tertiary-color: #008136;
-  --quaternary-color: #FFC53C;
+@layer base {
+    @font-face {
+        font-family: "Raleway";
+        src: url('src/assets/fonts/Raleway-VariableFont_wght.ttf');
+    }
+
+    @font-face {
+        font-family: "Sacramento";
+        src: url('src/assets/fonts/Sacramento-Regular.ttf');
+    }
 }
