@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
 import CustomerFeedback from "./components/CustomerFeedback";
+import Products from "./pages/Products";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/feedback" element={<CustomerFeedback />} />
+        <Route path="/produits" element={<Products />} />
         {/* <Route path="/hos_huiles" element={<NosHuiles/>}/> */}
         {/* <Route path="/huiles_naturelles" element={<HuileNaturelle/>}/>
         <Route path="/huiles_bio" element={<HuileBio/>}/>
