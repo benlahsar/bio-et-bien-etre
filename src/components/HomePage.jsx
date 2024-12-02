@@ -6,7 +6,7 @@ import img3 from '../assets/img3.jpg';
 import img4 from '../assets/img4.jpg';
 import img6 from '../assets/img6.jpg';
 import bgcolor from '../assets/bgcolor.jpg';
-import bgcolor2 from '../assets/bgcolor2.jpg'; 
+import bgcolor2 from '../assets/bgcolor2.jpg';
 
 const products = [
   {
@@ -43,13 +43,12 @@ const products = [
 
 const Home = () => {
   const carouselRef = useRef(null);
-  const [currentBg, setCurrentBg] = useState(bgcolor); 
+  const [currentBg, setCurrentBg] = useState(bgcolor);
 
-  
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentBg((prevBg) => (prevBg === bgcolor ? bgcolor2 : bgcolor)); 
-    }, 2000); 
+      setCurrentBg((prevBg) => (prevBg === bgcolor ? bgcolor2 : bgcolor));
+    }, 2000);
 
     return () => clearInterval(interval);
   }, []);
@@ -74,9 +73,9 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-primary text-secondary flex flex-col items-center mt-[72px]">
       
-      {/* Section de l'image principale  */}
+      {/* Section de l'image principale */}
       <div
-        className="relative w-full h-screen bg-cover bg-center flex items-center justify-center text-center"
+        className="relative w-full h-[calc(100vh-72px)] bg-cover bg-center flex items-center justify-center text-center"
         style={{ backgroundImage: `url(${currentBg})` }} 
       >
         <div className="absolute inset-0 bg-black opacity-30"></div>
@@ -89,17 +88,17 @@ const Home = () => {
       {/* Section des produits */}
       <div 
         ref={carouselRef}
-        className="flex overflow-x-auto gap-8 p-8 max-w-6xl w-full scroll-smooth hide-scrollbar"
+        className="flex overflow-x-auto gap-4 sm:gap-8 p-4 sm:p-8 max-w-6xl w-full scroll-smooth hide-scrollbar"
       >
         {products.map((product) => (
-          <article key={product.id} className="relative min-w-[300px] text-center group bg-white rounded-lg shadow-lg p-4">
+          <article key={product.id} className="relative min-w-[250px] sm:min-w-[300px] text-center group bg-white rounded-lg shadow-lg p-4">
             <img
               src={product.image}
               alt={product.title}
-              className="h-64 w-full object-cover rounded-lg mb-4 transition-transform duration-300 transform group-hover:scale-105"
+              className="h-56 sm:h-64 w-full object-cover rounded-lg mb-4 transition-transform duration-300 transform group-hover:scale-105"
             />
-            <h2 className="text-2xl font-semibold mb-2 text-gray-800">{product.title}</h2>
-            <p className="text-lg mb-4 text-gray-600">{product.description}</p>
+            <h2 className="text-xl sm:text-2xl font-semibold mb-2 text-gray-800">{product.title}</h2>
+            <p className="text-md sm:text-lg mb-4 text-gray-600">{product.description}</p>
             
             <button className="bg-third text-primary px-4 py-2 rounded-lg text-lg font-semibold hover:bg-fourth">
               Ajouter au panier
