@@ -13,10 +13,9 @@ import citron from '../assets/img/citron.webp';
 const HuileBio = () => (
   <>
     <Navbar />
-    <div className="flex">
+    <div className="flex mt-16">
       {/* Sidebar */}
       <Sidebar />
-
       {/* Main Content */}
       <div className="w-3/4 p-8 bg-secondary text-primary">
         <h1 className="text-3xl font-bold mb-4">Huile Bio</h1>
@@ -45,7 +44,8 @@ const HuileBio = () => (
           <div className="w-1/4 bg-white rounded-lg shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 p-4">
             <img src={coco} alt="Huile Bio" className="w-full h-auto rounded-lg mb-2" />
             <p className="text-center font-semibold mb-2">Huile de Coco</p>
-            <p className="text-yellow font-semibold text-center">Rs. 180.00</p>            <button className="w-full px-4 py-2 bg-primary text-secondary rounded hover:bg-yellow transition-colors duration-200">
+            <p className="text-yellow font-semibold text-center">Rs. 180.00</p>            
+            <button className="w-full px-4 py-2 bg-primary text-secondary rounded hover:bg-yellow transition-colors duration-200">
               Ajouter au panier
             </button>
           </div>
@@ -54,7 +54,8 @@ const HuileBio = () => (
           <div className="w-1/4 bg-white rounded-lg shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 p-4">
             <img src={olive} alt="Huile Bio" className="w-full h-auto rounded-lg mb-2" />
             <p className="text-center font-semibold mb-2">Huile d'Olive</p>
-            <p className="text-yellow font-semibold text-center">Rs. 180.00</p>            <button className="w-full px-4 py-2 bg-primary text-secondary rounded hover:bg-yellow transition-colors duration-200">
+            <p className="text-yellow font-semibold text-center">Rs. 180.00</p>            
+            <button className="w-full px-4 py-2 bg-primary text-secondary rounded hover:bg-yellow transition-colors duration-200">
               Ajouter au panier
             </button>
           </div>
@@ -63,7 +64,8 @@ const HuileBio = () => (
           <div className="w-1/4 bg-white rounded-lg shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 p-4">
             <img src={noix} alt="Huile Bio" className="w-full h-auto rounded-lg mb-2" />
             <p className="text-center font-semibold mb-2">Huile de Noix</p>
- <p className="text-yellow font-semibold text-center">Rs. 180.00</p>            <button className="w-full px-4 py-2 bg-primary text-secondary rounded hover:bg-yellow transition-colors duration-200">
+            <p className="text-yellow font-semibold text-center">Rs. 180.00</p>           
+            <button className="w-full px-4 py-2 bg-primary text-secondary rounded hover:bg-yellow transition-colors duration-200">
               Ajouter au panier
             </button>
           </div>
@@ -71,7 +73,8 @@ const HuileBio = () => (
            <div className="w-1/4 bg-white rounded-lg shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 p-4">
             <img src={citron} alt="Huile Bio" className="w-full h-auto rounded-lg mb-2" />
             <p className="text-center font-semibold mb-2">Huile de Citron</p>
- <p className="text-yellow font-semibold text-center">Rs. 180.00</p>            <button className="w-full px-4 py-2 bg-primary text-secondary rounded hover:bg-yellow transition-colors duration-200">
+            <p className="text-yellow font-semibold text-center">Rs. 180.00</p>            
+            <button className="w-full px-4 py-2 bg-primary text-secondary rounded hover:bg-yellow transition-colors duration-200">
               Ajouter au panier
             </button>
           </div>
