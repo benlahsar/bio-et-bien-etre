@@ -1,20 +1,19 @@
 import React from 'react';
-import Footer from './Footer';
 
 const categories = [
   {
     name: 'Huiles Bio',
-    img: 'src/assets/img/bio.jpg', // Remplacez par le bon chemin des images
+    img: 'src/assets/images/pic/bio.jpg', // Remplacez par le bon chemin des images
     link: '/huile-bio', // Utilisez un chemin valide
   },
   {
     name: 'Huiles Cosmétique',
-    img: 'src/assets/img/cosmetique.jpg', // Remplacez par le bon chemin des images
+    img: 'src/assets/images/pic/cosmetique.jpg', // Remplacez par le bon chemin des images
     link: '/huile-cosmetique', // Utilisez un chemin valide
   },
   {
     name: ' Huiles Cheveux',
-    img: 'src/assets/img/hair.jpg', // Remplacez par le bon chemin des images
+    img: 'src/assets/images/pic/hair.jpg', // Remplacez par le bon chemin des images
     link: '/huiles-cheveux', // Utilisez un chemin valide
   },
 ];
@@ -57,7 +56,6 @@ const Categorie = () => {
           ))}
         </div>
       </section>
-      <Footer />
     </>
   );
 };
