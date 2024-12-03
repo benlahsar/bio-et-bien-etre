@@ -1,3 +1,4 @@
+import { X } from "lucide-react";
 import React, { useState } from "react";
 import {
   FaShoppingCart,
@@ -6,10 +7,8 @@ import {
   FaBars,
   FaTimes,
 } from "react-icons/fa";
-import logo from "../assets/logo.jpg";
-import img20 from "../assets/img20.jpg";
 
-const Navbar = () => {
+const NavbarWithCart = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showProductDetails, setShowProductDetails] = useState(false); // État pour afficher/masquer les détails du produit
   const [quantity, setQuantity] = useState(1); // État pour gérer la quantité
@@ -29,10 +28,10 @@ const Navbar = () => {
   };
 
   return (
-    <div>
+    <>
       {/* Barre de navigation */}
       <nav className="p-4 flex justify-between items-center z-50 fixed top-0 left-0 right-0 bg-primary text-white shadow-md">
-        <img src={logo} alt="Mon Logo" className="h-10" />
+        {/* <img src={logo} alt="Mon Logo" className="h-10" /> */}
         <ul className="hidden md:flex space-x-6 font-['Raleway'] text-xl">
           <li>
             <a className="hover:text-third" href="#home">
@@ -96,7 +95,7 @@ const Navbar = () => {
 
       {/* Section des détails du produit */}
       <div
-        className={`fixed top-20 right-4     w-80 h-[87%] rounded-xl bg-white shadow-lg z-50 p-6 transition-transform duration-300 ${
+        className={`fixed top-20 right-4 w-80 h-[87%] rounded-xl bg-white shadow-lg z-50 p-6 transition-transform duration-300 ${
           showProductDetails ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -107,15 +106,15 @@ const Navbar = () => {
               className="cursor-pointer"
               onClick={() => setShowProductDetails(false)}
             >
-              ❌
+              <X color="red" />
             </span>
           </div>
           <div className="flex items-center space-x-4">
-            <img
+            {/* <img
               src={img20}
               alt="Produit"
               className="w-16 h-16 object-cover rounded-md"
-            />
+            /> */}
             <div>
               <p className="font-bold">Nom du produit</p>
               <p>Prix : 100 MAD</p>
@@ -130,8 +129,8 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
-export default Navbar;
+export default NavbarWithCart;

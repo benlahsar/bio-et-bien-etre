@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { ShoppingCart, Heart, CircleUserRound, ArrowDown  } from 'lucide-react';
 import { useNavigate } from "react-router-dom";
+import { X } from "lucide-react";
+
 
 const Navbar = () => {
   // State for dropdowns
@@ -14,6 +16,24 @@ const Navbar = () => {
 
   // Toggle oils dropdown
   const toggleOilsDropdown = () => setOilsDropdownOpen(!oilsDropdownOpen);
+
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [showProductDetails, setShowProductDetails] = useState(false); // État pour afficher/masquer les détails du produit
+  const [quantity, setQuantity] = useState(1); // État pour gérer la quantité
+
+  // Fonction pour augmenter la quantité
+  const handleAdd = () => setQuantity(quantity + 1);
+
+  // Fonction pour diminuer la quantité (minimum = 1)
+  const handleRemove = () => {
+    if (quantity > 1) setQuantity(quantity - 1);
+  };
+
+  // Fonction pour valider l'ajout (par exemple, ajouter au panier)
+  const handleValidate = () => {
+    alert("Produit validé !"); // Remplacer par la logique réelle
+    setShowProductDetails(false);
+  };
 
   return (
     <nav className="bg-gradient-to-r from-emerald-300 via-amber-200 to-yellow-100 text-gray-800 p-4 flex justify-between items-center shadow-lg fixed top-0 left-0 right-0 z-50">
@@ -33,7 +53,6 @@ const Navbar = () => {
       <ul className="hidden md:flex space-x-8 text-lg font-medium">
         <li>
           <a
-            href="#home"
             className="relative hover:text-emerald-700 transition duration-200"
           >
             Home
@@ -55,19 +74,16 @@ const Navbar = () => {
           {oilsDropdownOpen && (
             <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg py-2 z-10">
               <a
-                href="#huile-naturelles"
                 className="block px-4 py-2 text-gray-800 hover:bg-emerald-100"
               >
                 Huile Naturelles
               </a>
               <a
-                href="#huile-essentielles"
                 className="block px-4 py-2 text-gray-800 hover:bg-emerald-100"
               >
                 Huile Essentielles
               </a>
               <a
-                href="#huiles-de-cheveux"
                 className="block px-4 py-2 text-gray-800 hover:bg-emerald-100"
               >
                 Huiles de Cheveux
@@ -78,7 +94,6 @@ const Navbar = () => {
 
         <li>
           <a
-            href="#blog"
             className="relative hover:text-emerald-700 transition duration-200"
           >
             Blog
@@ -87,7 +102,6 @@ const Navbar = () => {
         </li>
         <li>
           <a
-            href="#contact"
             className="relative hover:text-emerald-700 transition duration-200"
           >
             Contact
@@ -99,14 +113,13 @@ const Navbar = () => {
       {/* Icons */}
       <div className="flex space-x-4 items-center">
         <a
-          href="#cart"
           aria-label="Cart"
           className="hover:text-amber-600 transition duration-200"
+          onClick={() => setShowProductDetails(!showProductDetails)}
         >
           <ShoppingCart />
         </a>
         <a
-          href="#like"
           aria-label="Favorites"
           className="hover:text-amber-600 transition duration-200"
         >
@@ -139,6 +152,41 @@ const Navbar = () => {
               </a>
             </div>
           )}
+        </div>
+      </div>
+      <div
+        className={`fixed top-24 right-4 w-80 h-[87%] rounded-xl bg-white shadow-lg z-50 p-6 transition-transform duration-300 ${
+          showProductDetails ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="bg-white p-6 shadow-lg rounded-lg h-[40%] flex flex-col">
+          <div className="flex justify-between">
+            <h2 className="text-lg font-bold mb-4">Détails du produit</h2>
+            <span
+              className="cursor-pointer"
+              onClick={() => setShowProductDetails(false)}
+            >
+              <X color="red" />
+            </span>
+          </div>
+          <div className="flex items-center space-x-4">
+            {/* <img
+              src={img20}
+              alt="Produit"
+              className="w-16 h-16 object-cover rounded-md"
+            /> */}
+            <div>
+              <p className="font-bold">Nom du produit</p>
+              <p>Prix : 100 MAD</p>
+              <p>Quantité : {quantity}</p>
+            </div>
+          </div>
+          <button
+            onClick={handleRemove}
+            className="bg-red-500 text-white w-full py-2 rounded mt-5 hover:bg-red-600"
+          >
+            Supprimer
+          </button>
         </div>
       </div>
     </nav>
