@@ -36,7 +36,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gradient-to-r from-emerald-300 via-amber-200 to-yellow-100 text-gray-800 p-4 flex justify-between items-center shadow-lg fixed top-0 left-0 right-0 z-50">
+    <nav className="bg-gradient-to-r from-emerald-400 via-amber-300 to-yellow-200 text-gray-800 p-4 flex justify-between items-center shadow-lg fixed top-0 left-0 right-0 z-50">
       {/* Logo */}
       <div className="flex items-center">
         <img
@@ -53,7 +53,8 @@ const Navbar = () => {
       <ul className="hidden md:flex space-x-8 text-lg font-medium">
         <li>
           <a
-            className="relative hover:text-emerald-700 transition duration-200"
+            className="relative cursor-pointer hover:text-emerald-700 transition duration-200"
+            onClick={() => navigate("/")}
           >
             Home
             <span className="absolute left-0 bottom-0 w-0 h-1 bg-emerald-700 transition-all duration-300 group-hover:w-full"></span>
@@ -75,16 +76,19 @@ const Navbar = () => {
             <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg py-2 z-10">
               <a
                 className="block px-4 py-2 text-gray-800 hover:bg-emerald-100"
+                onClick={() => navigate("/produits")}
               >
                 Huile Naturelles
               </a>
               <a
                 className="block px-4 py-2 text-gray-800 hover:bg-emerald-100"
+                onClick={() => navigate("/produits")}
               >
                 Huile Essentielles
               </a>
               <a
                 className="block px-4 py-2 text-gray-800 hover:bg-emerald-100"
+                onClick={() => navigate("/produits")}
               >
                 Huiles de Cheveux
               </a>
@@ -94,7 +98,8 @@ const Navbar = () => {
 
         <li>
           <a
-            className="relative hover:text-emerald-700 transition duration-200"
+            className="relative cursor-pointer hover:text-emerald-700 transition duration-200"
+            onClick={() => navigate("/blog")}
           >
             Blog
             <span className="absolute left-0 bottom-0 w-0 h-1 bg-emerald-700 transition-all duration-300 group-hover:w-full"></span>

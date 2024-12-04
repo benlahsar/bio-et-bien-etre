@@ -1,6 +1,7 @@
 import Categorie from "../components/category";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import Offers from "../components/Offerts";
 import Section_1 from "../components/Section_1";
 import Section_2 from "../components/Section_2";
 import NavbarWithCart from "./NavBar";
@@ -15,6 +16,7 @@ export default function Home() {
       <Section_2 />
       <Categorie />
       <WaterSection />
+      <Offers />
       <Footer />
     </>
   );
