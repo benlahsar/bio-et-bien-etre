@@ -107,9 +107,10 @@ const Navbar = () => {
         </li>
         <li>
           <a
-            className="relative hover:text-emerald-700 transition duration-200"
+            className="relative cursor-pointer hover:text-emerald-700 transition duration-200"
+            onClick={() => navigate("/about")}
           >
-            Contact
+            About Us
             <span className="absolute left-0 bottom-0 w-0 h-1 bg-emerald-700 transition-all duration-300 group-hover:w-full"></span>
           </a>
         </li>

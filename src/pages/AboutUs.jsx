@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Configuration, OpenAIApi } from "openai";
-import { OpenAI } from "openai";
+// import { Configuration, OpenAIApi } from "openai";
+// import { OpenAI } from "openai";
 
 export default function AboutUs() {
   const [question, setQuestion] = useState('');
