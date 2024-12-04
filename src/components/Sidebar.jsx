@@ -13,17 +13,20 @@ const Sidebar = ({ minPrice, maxPrice, setMinPrice, setMaxPrice }) => {
       <h2 className="text-xl font-semibold mb-4 ">Catégorie</h2>
       <ul className="mb-8">
         <li>
-          <button onClick={() => navigate("/huiles_naturelles")} className="block py-2 hover:text-yellow transition-colors duration-200">Huile Naturelle</button>
+          <button onClick={() => navigate("/huiles_cosmetique")} className="block py-2 hover:text-yellow transition-colors duration-200">Huile Cosmétique</button>
         </li>
         <li>
         <button onClick={() => navigate("/huiles_bio")} className="block py-2 hover:text-yellow transition-colors duration-200">Huile Bio</button>
+        </li>
+        <li>
+          <button onClick={() => navigate("/huiles_cheveux")} className="block py-2 hover:text-yellow transition-colors duration-200">Huile cheveux</button>
         </li>
       </ul>
       <h2 className="text-xl font-semibold mb-4">Meilleures Ventes</h2>
       <div className="mb-8 text-center bg-emerald p-2 rounded-lg shadow-lg">
         <img src={avocado} alt="Huile d'Avocat" className="w-full mb-2 rounded" />
         <p className="text-secondary">Huile d'Avocat</p>
-        <p className="text-yellow font-semibold">Rs. 180.00</p>
+        <p className="text-secondary ">Rs. 180.00 dh</p>
       </div>
      
       

@@ -2,6 +2,7 @@ import { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import ProductGrid from "../components/ProductGrid";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export default function NosHuiles() {
     const [minPrice, setMinPrice] = useState('');
@@ -13,6 +14,7 @@ export default function NosHuiles() {
             <Sidebar minPrice={minPrice} maxPrice={maxPrice} setMinPrice={setMinPrice} setMaxPrice={setMaxPrice} />
             <ProductGrid minPrice={minPrice} maxPrice={maxPrice} />
         </div>
+        <Footer />
     </>
     );
 }

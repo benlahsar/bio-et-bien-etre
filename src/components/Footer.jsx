@@ -1,51 +1,69 @@
-// src/Footer.jsx
 import React from 'react';
 import { FaTwitter, FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa';
 
 function Footer() {
     return (
-        <footer className="bg-primary text-secondary py-8">
+        <footer className="bg-gradient-to-r from-emerald-200 via-amber-100 to-yellow-50 text-gray-800 py-12">
             <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
                 
                 {/* Contact Section */}
-                <div>
-                    <h2 className="font-semibold text-lg">CONTACT</h2>
-                    <p className="mt-4 text-secondary">No: 58 A, East Madison Street, Baltimore, MD, USA 4508</p>
-                    <p className="text-secondary">0000 - 123 - 456789</p>
-                    <p className="text-secondary">info@example.com</p>
+                <div className="space-y-4">
+                    <h2 className="font-semibold text-xl text-emerald-800">CONTACT</h2>
+                    <p className="text-green-900">No: 58 A, East Madison Street, Baltimore, MD, USA 4508</p>
+                    <p className="text-green-900">0000 - 123 - 456789</p>
+                    <p className="text-green-900">info@example.com</p>
                 </div>
 
                 {/* Center Text Section */}
-                <div className="text-center">
-                    <p className="mt-4 text-secondary">
-                        Ehyes dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.
+                <div className="text-center space-y-4">
+                    <p className="text-green-900 max-w-sm mx-auto">
+                        Our products are crafted with care to provide you with the best natural beauty experience. Discover our luxurious essential oils and beauty solutions.
                     </p>
-                    <div className="flex justify-center space-x-4 mt-4">
-                        <a href="#" className="text-emerald"><FaTwitter size={20} /></a>
-                        <a href="#" className="text-emerald"><FaFacebook size={20} /></a>
-                        <a href="#" className="text-emerald"><FaInstagram size={20} /></a>
-                        <a href="#" className="text-emerald"><FaYoutube size={20} /></a>
+                    <div className="flex justify-center space-x-6">
+                        <a  className="text-emerald-700 hover:text-amber-600 transition duration-200">
+                            <FaTwitter size={24} />
+                        </a>
+                        <a  className="text-emerald-700 hover:text-amber-600 transition duration-200">
+                            <FaFacebook size={24} />
+                        </a>
+                        <a  className="text-emerald-700 hover:text-amber-600 transition duration-200">
+                            <FaInstagram size={24} />
+                        </a>
+                        <a  className="text-emerald-700 hover:text-amber-600 transition duration-200">
+                            <FaYoutube size={24} />
+                        </a>
                     </div>
-                    <form className="mt-4 flex justify-center">
+                    <form className="flex justify-center space-x-2 mt-4">
                         <input
                             type="email"
-                            placeholder="Your Email Here"
-                            className="bg-transparent border-b border-secondary text-secondary p-2 w-2/3 placeholder-secondary"
+                            placeholder="Enter your email"
+                            className="bg-transparent border-b-2 border-green-900 text-green-900 p-2 w-2/3 placeholder-green-900 focus:outline-none"
                         />
-                        <button className="bg-transparent text-secondary font-semibold ml-2">Send</button>
+                        <button className="bg-emerald-700 text-white px-4 py-2 rounded-md hover:bg-emerald-800 transition duration-200">
+                            Subscribe
+                        </button>
                     </form>
-                    <p className="mt-4 text-yellow">SIGN UP: Like & Subscribe our Product to Get Latest Updates</p>
+                    <p className="mt-4 text-amber-600 font-semibold">
+                        SIGN UP: Like & Subscribe to Get the Latest Updates on New Products & Offers!
+                    </p>
                 </div>
 
                 {/* Support Section */}
-                <div className="text-right">
-                    <h2 className="font-semibold text-lg text-secondary">SUPPORT</h2>
-                    <ul className="mt-4 space-y-2">
-                        <li><a href="#" className="hover:underline text-secondary">Gallery</a></li>
-                        <li><a href="#" className="hover:underline text-secondary">Settings</a></li>
-                        <li><a href="#" className="hover:underline text-secondary">Portfolio</a></li>
+                <div className="text-right space-y-4">
+                    <h2 className="font-semibold text-xl text-emerald-800">SUPPORT</h2>
+                    <ul className="space-y-2">
+                        <li><a  className="hover:underline text-green-900">Gallery</a></li>
+                        <li><a  className="hover:underline text-green-900">Settings</a></li>
+                        <li><a  className="hover:underline text-green-900">Portfolio</a></li>
                     </ul>
                 </div>
+            </div>
+
+            {/* Footer Bottom */}
+            <div className="text-center py-4 mt-8 border-t border-emerald-700">
+                <p className="text-green-900 text-sm">
+                    &copy; 2024 Bio et Bien-être. All rights reserved.
+                </p>
             </div>
         </footer>
     );

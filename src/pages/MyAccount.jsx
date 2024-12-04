@@ -1,100 +1,117 @@
+import { useEffect, useState } from "react";
 import DashBoardSideBar from "../components/DashBoardSideBar";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import api from "../api/auth";
+import { Pencil } from "lucide-react";
 
 export default function MyAccount() {
+  const [user, serUser] = useState(null);
+
+  async function getUser() {
+    const { data } = await api.get("/api/user");
+    serUser(data);
+  }
+  useEffect(() => {
+    if (!user) {
+      getUser();
+    }
+  }, [user, getUser]);
+
   return (
     <>
       <Navbar />
-      <div className="flex">
+      <div className="flex flex-col lg:flex-row bg-gray-50 min-h-screen">
         <DashBoardSideBar />
-        <div className="w-full h-screen mt-16">
-          <h1 className="text-3xl font-bold mb-6">My Account</h1>
+        <main className="w-full lg:w-4/5 p-8 mt-20">
+          <h1 className="text-4xl font-bold text-gray-800 mb-8">My Account</h1>
 
           {/* Profile Section */}
-          <div className="bg-white shadow rounded-lg p-6 mb-6">
-            <h2 className="text-2xl font-semibold mb-4">Profile Information</h2>
-            <form className="space-y-4">
+          <section className="bg-white shadow-md rounded-lg p-6 mb-8">
+            <h2 className="text-2xl font-semibold text-gray-700 mb-6">
+              Profile Information
+            </h2>
+            <form className="grid gap-6 md:grid-cols-2">
               <div>
-                <label className="block text-gray-700">Name</label>
+                <label className="block text-gray-600 mb-1">Name</label>
                 <input
                   type="text"
-                  className="w-full border border-gray-300 p-2 rounded"
+                  className="w-full border border-gray-300 rounded-lg p-3 focus:ring focus:ring-green-300 focus:outline-none"
                   placeholder="John Doe"
+                  value={user?.name}
+                  readOnly
+                  disabled
                 />
               </div>
               <div>
-                <label className="block text-gray-700">Email</label>
+                <label className="block text-gray-600 mb-1">Email</label>
                 <input
                   type="email"
-                  className="w-full border border-gray-300 p-2 rounded"
+                  className="w-full border border-gray-300 rounded-lg p-3 focus:ring focus:ring-green-300 focus:outline-none"
                   placeholder="example@email.com"
+                  value={user?.email}
+                  readOnly
+                  disabled
                 />
               </div>
-              <button className="bg-blue-500 text-white px-4 py-2 rounded">
-                Save Changes
-              </button>
+              <div className="col-span-full">
+                <button className="flex w-full md:w-auto bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition duration-300">
+                  Edit<Pencil className="ml-6 h-6" size={20}/>
+                </button>
+              </div>
             </form>
-          </div>
+          </section>
 
           {/* Order History Section */}
-          <div className="bg-white shadow rounded-lg p-6 mb-6">
-            <h2 className="text-2xl font-semibold mb-4">Order History</h2>
-            <ul className="space-y-4">
-              <li className="border-b pb-4">
-                <div className="flex justify-between">
-                  <span>Order #12345</span>
-                  <span className="text-gray-500">Date: 2023-01-01</span>
-                </div>
-                <div className="text-right mt-2">
-                  <button className="text-blue-500 hover:underline">
-                    View Details
-                  </button>
-                </div>
-              </li>
-              <li className="border-b pb-4">
-                <div className="flex justify-between">
-                  <span>Order #12344</span>
-                  <span className="text-gray-500">Date: 2023-01-10</span>
-                </div>
-                <div className="text-right mt-2">
-                  <button className="text-blue-500 hover:underline">
-                    View Details
-                  </button>
-                </div>
-              </li>
+          <section className="bg-white shadow-md rounded-lg p-6 mb-8">
+            <h2 className="text-2xl font-semibold text-gray-700 mb-6">
+              Order History
+            </h2>
+            <ul className="space-y-6">
+              {[12345, 12344].map((orderId) => (
+                <li key={orderId} className="border-b pb-4">
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <p className="text-gray-800 font-medium">
+                        Order #{orderId}
+                      </p>
+                      <p className="text-sm text-gray-500">Date: 2023-01-01</p>
+                    </div>
+                    <button className="text-green-500 hover:underline">
+                      View Details
+                    </button>
+                  </div>
+                </li>
+              ))}
             </ul>
-          </div>
+          </section>
 
           {/* Address Book Section */}
-          <div className="bg-white shadow rounded-lg p-6">
-            <h2 className="text-2xl font-semibold mb-4">Address Book</h2>
-            <ul className="space-y-4">
-              <li className="border p-4 rounded-lg">
-                <div className="flex justify-between items-center">
-                  <div>
-                    <p className="font-semibold">Home Address</p>
-                    <p>123 Main St, Cityville, CA 12345</p>
+          <section className="bg-white shadow-md rounded-lg p-6">
+            <h2 className="text-2xl font-semibold text-gray-700 mb-6">
+              Address Book
+            </h2>
+            <ul className="space-y-6">
+              {["Home Address", "Work Address"].map((label, index) => (
+                <li key={index} className="border p-4 rounded-lg">
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <p className="font-semibold text-gray-800">{label}</p>
+                      <p className="text-gray-600">
+                        {index === 0
+                          ? "123 Main St, Cityville, CA 12345"
+                          : "456 Business Rd, Metropolis, NY 67890"}
+                      </p>
+                    </div>
+                    <button className="text-green-500 hover:underline">
+                      Edit
+                    </button>
                   </div>
-                  <button className="text-blue-500 hover:underline">
-                    Edit
-                  </button>
-                </div>
-              </li>
-              <li className="border p-4 rounded-lg">
-                <div className="flex justify-between items-center">
-                  <div>
-                    <p className="font-semibold">Work Address</p>
-                    <p>456 Business Rd, Metropolis, NY 67890</p>
-                  </div>
-                  <button className="text-blue-500 hover:underline">
-                    Edit
-                  </button>
-                </div>
-              </li>
+                </li>
+              ))}
             </ul>
-          </div>
-        </div>
+          </section>
+        </main>
       </div>
       <Footer />
     </>
