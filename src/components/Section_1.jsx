@@ -184,7 +184,7 @@ export default function Section_1() {
     <BigContainer>
       <ImageContainer>
         <img
-          src={"src/assets/images/BioHuile1.webp"}
+          src="https://res.cloudinary.com/du9af99hf/image/upload/v1733744401/assets/images/cv5djx1a6tpo7sh4nvae.webp"
           alt="Huiles Bio et Bien Etre"
         />
       </ImageContainer>

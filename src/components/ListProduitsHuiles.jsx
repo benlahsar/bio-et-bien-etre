@@ -3,49 +3,62 @@ import styled from "styled-components";
 import { ShoppingCart, ChevronLeft, ChevronRight } from "lucide-react";
 
 const products = [
-  { id: 1, name: "Thrive", price: 150, image: "src/assets/Thrive.avif" },
-  { id: 2, name: "Mearom", price: 80, image: "src/assets/Mearom.jpg" },
+  {
+    id: 1,
+    name: "Thrive",
+    price: 150,
+    image:
+      "https://res.cloudinary.com/du9af99hf/image/upload/v1733744490/assets/jutzfy3nxuzmj6totvde.avif",
+  },
+  {
+    id: 2,
+    name: "Mearom",
+    price: 80,
+    image:
+      "https://res.cloudinary.com/du9af99hf/image/upload/v1733744366/assets/bxvdjrlq01ngt0lobkfd.webp",
+  },
   {
     id: 3,
     name: "Nature Et soin",
     price: 200,
-    image: "src/assets/NatureEsoin.jpg",
+    image:
+      "https://res.cloudinary.com/du9af99hf/image/upload/v1733744488/assets/qkvaqubqpgovby66xyby.webp",
   },
   {
     id: 4,
     name: "Now Essential Oils",
     price: 120,
-    image: "src/assets/Now_essential_oils.jpg",
+    image: "https://res.cloudinary.com/du9af99hf/image/upload/v1733744488/assets/cqrgg1eykpkk25a7rjwd.jpg",
   },
-  { id: 5, name: "Saje", price: 100, image: "src/assets/Saje.avif" },
+  { id: 5, name: "Saje", price: 100, image: "https://res.cloudinary.com/du9af99hf/image/upload/v1733744490/assets/xgs6szxpbj2mqfszji7n.avif" },
   {
     id: 6,
     name: "Basilic Tropical",
     price: 180,
-    image: "src/assets/BasilicTropical.jpg",
+    image: "https://res.cloudinary.com/du9af99hf/image/upload/v1733744374/assets/emfhta32sq57o6rxffei.jpg",
   },
-  { id: 7, name: "Citronnele", price: 160, image: "src/assets/Citronnele.jpg" },
+  { id: 7, name: "Citronnele", price: 160, image: "https://res.cloudinary.com/du9af99hf/image/upload/v1733744470/assets/tybgzwdd2hk3uyowzv8t.jpg" },
   {
     id: 8,
     name: "Fleur d'Orange",
     price: 220,
-    image: "src/assets/Fleur_orange.jpg",
+    image: "https://res.cloudinary.com/du9af99hf/image/upload/v1733744377/assets/vpkplr0iyacy34tzrbzy.jpg",
   },
-  { id: 9, name: "Houssance", price: 90, image: "src/assets/Houssance.avif" },
+  { id: 9, name: "Houssance", price: 90, image: "https://res.cloudinary.com/du9af99hf/image/upload/v1733744398/assets/vt4cdun7vbtmhexi6utq.avif" },
   {
     id: 10,
     name: "Huile En Vanille",
     price: 250,
-    image: "src/assets/HuileVanille.webp",
+    image: "https://res.cloudinary.com/du9af99hf/image/upload/v1733744399/assets/o6y5d2gibmv11vacc6yu.webp",
   },
-  { id: 11, name: "Jasmin", price: 70, image: "src/assets/Jasmin.webp" },
+  { id: 11, name: "Jasmin", price: 70, image: "https://res.cloudinary.com/du9af99hf/image/upload/v1733744478/assets/a7fyielvtf1mmuhdln7i.webp" },
   {
     id: 12,
     name: "Puressentielle",
     price: 110,
-    image: "src/assets/Puressentielle.jpg",
+    image: "https://res.cloudinary.com/du9af99hf/image/upload/v1733744486/assets/ohknlr6g3jhpzekuh21m.jpg",
   },
-  { id: 13, name: "Test", price: 110, image: "src/assets/Test_svg.svg" },
+  { id: 13, name: "Test", price: 110, image: "https://res.cloudinary.com/du9af99hf/image/upload/v1733744470/assets/tybgzwdd2hk3uyowzv8t.jpg" },
 ];
 
 const Container = styled.div`
