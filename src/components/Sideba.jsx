@@ -36,7 +36,7 @@ const Sidebar = () => {
       <h2 className="text-2xl font-bold mb-6 text-primary">Best Sellers</h2>
       <div className="flex flex-col items-center mb-8 bg-secondary p-4 rounded-lg shadow-sm">
         <img
-          src="src/assets/img/argan.webp"
+          src="https://res.cloudinary.com/du9af99hf/image/upload/v1733744474/assets/kuvydeypshgpiigvcfkt.jpg"
           alt="Mare Perfume"
           className="w-24 h-24 rounded-md mb-3"
         />
