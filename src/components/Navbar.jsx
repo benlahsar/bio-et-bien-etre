@@ -40,7 +40,7 @@ const Navbar = () => {
       {/* Logo */}
       <div className="flex items-center">
         <img
-          src="src/assets/images/logo.png"
+          src="https://res.cloudinary.com/du9af99hf/image/upload/v1733744428/assets/images/z744tij7w97c6ss9xoyd.png"
           alt="Mon Logo"
           className="h-12 w-auto rounded-lg shadow-sm"
         />

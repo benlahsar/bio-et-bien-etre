@@ -4,17 +4,17 @@ import { useNavigate } from "react-router-dom";
 const categories = [
   {
     name: "Huiles Bio",
-    img: "src/assets/images/pic/bio.jpg", // Remplacez par le bon chemin des images
+    img: "https://res.cloudinary.com/du9af99hf/image/upload/v1733744411/assets/images/pic/mihvtmysdulcvy21rfpa.jpg", // Remplacez par le bon chemin des images
     link: "/huile-bio", // Utilisez un chemin valide
   },
   {
     name: "Huiles Cosmétique",
-    img: "src/assets/images/pic/cosmetique.jpg", // Remplacez par le bon chemin des images
+    img: "https://res.cloudinary.com/du9af99hf/image/upload/v1733744420/assets/images/pic/funpdrysh9zij5ujcfkh.jpg", // Remplacez par le bon chemin des images
     link: "/huile-cosmetique", // Utilisez un chemin valide
   },
   {
     name: " Huiles Cheveux",
-    img: "src/assets/images/pic/hair.jpg", // Remplacez par le bon chemin des images
+    img: "https://res.cloudinary.com/du9af99hf/image/upload/v1733744426/assets/images/pic/ecf5hyhgjmjkkl2gfehu.jpg", // Remplacez par le bon chemin des images
     link: "/huiles-cheveux", // Utilisez un chemin valide
   },
 ];

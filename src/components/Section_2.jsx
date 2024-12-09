@@ -112,7 +112,7 @@ export default function Section_2() {
       <InformContainer>
         <InformContent>
           <InformImage>
-            <img src={"src/assets/images/huile_essentielle.png"} alt="Huile essentielle" />
+            <img src={"https://res.cloudinary.com/du9af99hf/image/upload/v1733744403/assets/images/qwk1ku9uuywnda3dhxgq.png"} alt="Huile essentielle" />
           </InformImage>
           <InformText>
             Huiles essentielles bio, soigneusement sélectionnées pour votre bien-être.
@@ -121,7 +121,7 @@ export default function Section_2() {
 
         <InformContent>
           <InformImage>
-            <img src={"src/assets/images/garantie.png"} alt="Produit Garantie" />
+            <img src={"https://res.cloudinary.com/du9af99hf/image/upload/v1733744401/assets/images/jkny0dj4qsuzct36scrx.png"} alt="Produit Garantie" />
           </InformImage>
           <InformText>
             Garantie de qualité pour des produits naturels et écoresponsables.
@@ -130,7 +130,7 @@ export default function Section_2() {
 
         <InformContent>
           <InformImage>
-            <img src={"src/assets/images/maroc.png"} alt="Drapeau Maroc" />
+            <img src={"https://res.cloudinary.com/du9af99hf/image/upload/v1733744407/assets/images/y3rfybd98gqr1a7g8syj.png"} alt="Drapeau Maroc" />
           </InformImage>
           <InformText>
             Entreprise marocaine dynamique et flexible, à votre service et à votre écoute !
