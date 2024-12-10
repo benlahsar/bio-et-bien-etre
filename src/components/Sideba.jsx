@@ -1,9 +1,19 @@
+import { XIcon } from "lucide-react";
 import React from "react";
 
-const Sidebar = () => {
+const Sidebar = ({ isVisible, toggleSidebar }) => {
   return (
-    <aside className="w-1/4 p-6 bg-card border border-border shadow-lg mt-20">
-      {/* Categories Section */}
+    <aside
+      className={`fixed overflow-y-auto md:relative top-0 left-0 h-full md:h-auto md:w-1/4 bg-card p-6 border border-border shadow-lg mt-20 z-50 transform transition-transform ${
+        isVisible ? "translate-x-0" : "-translate-x-full"
+      } md:translate-x-0`}
+    >
+      <button
+        onClick={toggleSidebar}
+        className="absolute top-4 right-4 md:hidden bg-primary text-white p-2 rounded"
+      >
+        <XIcon />
+      </button>
       <h2 className="text-2xl font-bold mb-6 text-primary">Category</h2>
       <ul className="mb-8">
         <li>
@@ -87,6 +97,7 @@ const Sidebar = () => {
       <button className="mt-6 w-full bg-primary text-primary-foreground py-2 rounded-md hover:bg-yellow">
         Clear All
       </button>
+      {/* Other sidebar content */}
     </aside>
   );
 };
