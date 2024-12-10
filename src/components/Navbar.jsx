@@ -41,6 +41,7 @@ const Navbar = () => {
       <div className="flex items-center">
         <img
           src="https://res.cloudinary.com/du9af99hf/image/upload/v1733744428/assets/images/z744tij7w97c6ss9xoyd.png"
+          loading="lazy"
           alt="Mon Logo"
           className="h-12 w-auto rounded-lg shadow-sm"
         />
@@ -161,7 +162,7 @@ const Navbar = () => {
         </div>
       </div>
       <div
-        className={`fixed top-24 right-4 w-80 h-[87%] rounded-xl bg-white shadow-lg z-50 p-6 transition-transform duration-300 ${
+        className={`fixed top-24 right-0 w-80 h-[87%] rounded-xl bg-white shadow-lg z-50 p-6 transition-transform duration-300 ${
           showProductDetails ? "translate-x-0" : "translate-x-full"
         }`}
       >

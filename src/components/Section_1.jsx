@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 // import BioHuile1 from "src/assets/images/BioHuile1.webp";
 
@@ -22,6 +23,7 @@ export default function Section_1() {
 
     @media (max-width: 768px) {
       padding: 10px;
+      margin-top: 80px;
     }
   `;
 
@@ -175,10 +177,7 @@ export default function Section_1() {
     }
   `;
 
-  const NosHuiles = () => {
-    window.location.href =
-      "https://www.google.com/search?client=firefox-b-d&q=nizar+baraka";
-  };
+  const navigate = useNavigate();
 
   return (
     <BigContainer>
@@ -210,7 +209,9 @@ export default function Section_1() {
           👉 Explorez nos produits dès aujourd'hui et faites le plein de
           bien-être !
         </p>
-        <NosBtn onClick={NosHuiles}>Découvrez Nos Huiles</NosBtn>
+        <NosBtn onClick={() => navigate("/produits")}>
+          Découvrez Nos Huiles
+        </NosBtn>
       </ContentL>
     </BigContainer>
   );

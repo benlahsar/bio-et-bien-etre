@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "./Category.css";
 
 const categories = [
   {
@@ -34,7 +35,7 @@ const CategoryCard = ({ name, img }) => {
       <p className="font-semibold text-lg mt-4 text-primary">{name}</p>
       <button
         onClick={() => navigate("/produits")}
-        className="inline-block mt-4 px-4 py-2 border border-emerald rounded text-emerald hover:bg-yellow hover:text-secondary transition-all"
+        className="inline-block mt-4 px-6 py-3 rounded-full text-white font-semibold shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 animated-gradient"
       >
         Découvrir nos produits
       </button>
@@ -42,10 +43,12 @@ const CategoryCard = ({ name, img }) => {
   );
 };
 
+
+
 const Categorie = () => {
   return (
     <>
-      <section className="py-12 bg-gray-500">
+      <section className="py-12 bg-green-100">
         <h2 className="text-center text-3xl font-bold text-primary mb-12">
           NOS CATÉGORIES PRODUITS
         </h2>
