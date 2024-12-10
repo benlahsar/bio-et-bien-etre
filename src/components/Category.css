@@ -1,18 +1,24 @@
 @keyframes gradient-animation {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+  0% {
+    background-position: 0% 50%;
   }
-  
-  .animated-gradient {
-    background: linear-gradient(90deg, #34d399, #fbbf24, #f87171, #38bdf8);
-    background-size: 300% 300%;
-    animation: gradient-animation 5s ease infinite;
+  50% {
+    background-position: 100% 50%;
   }
-  
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-gradient {
+  background: linear-gradient(90deg, #34d399, #fbbf24, #f87171, #38bdf8);
+  background-size: 300% 300%;
+  /* Remove the animation from the default state */
+  /* animation: gradient-animation 5s ease infinite; */
+  transition: background-position 0.5s ease; /* Smooth transition */
+}
+
+.animated-gradient:hover {
+  /* Apply the animation on hover */
+  animation: gradient-animation 5s ease infinite;
+}
