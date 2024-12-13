@@ -5,6 +5,100 @@ import { useNavigate } from "react-router-dom";
 import api from "../api/auth";
 import { useCart } from "../context/CartContext";
 
+const products = [
+  {
+    id: 1,
+    name: "Lavender Essential Oil",
+    image: "https://res.cloudinary.com/du9af99hf/image/upload/v1733744485/assets/images/product_images/wb8mqysdjdw4rjc5vgty.webp",
+    price: 12.99,
+  },
+  {
+    id: 2,
+    name: "Peppermint Essential Oil",
+    image: "https://res.cloudinary.com/du9af99hf/image/upload/v1733744462/assets/images/product_images/f8pyny7bqj973xngigwy.webp",
+    price: 10.99,
+  },
+  {
+    id: 3,
+    name: "Tea Tree Essential Oil",
+    image: "https://res.cloudinary.com/du9af99hf/image/upload/v1733744461/assets/images/product_images/hul6yle5moz7yvvcrzbt.jpg",
+    price: 9.99,
+  },
+  {
+    id: 4,
+    name: "Eucalyptus Essential Oil",
+    image: "https://res.cloudinary.com/du9af99hf/image/upload/v1733744459/assets/images/product_images/p55bmlsike85zowwzdkf.webp",
+    price: 11.99,
+  },
+  {
+    id: 5,
+    name: "Lemon Essential Oil",
+    image: "https://res.cloudinary.com/du9af99hf/image/upload/v1733744458/assets/images/product_images/lapevbpigrqqemy6uss7.webp",
+    price: 8.99,
+  },
+  {
+    id: 6,
+    name: "Rosemary Essential Oil",
+    image: "https://res.cloudinary.com/du9af99hf/image/upload/v1733744456/assets/images/product_images/hawzehyits9ig63zv7gp.webp",
+    price: 13.99,
+  },
+  {
+    id: 7,
+    name: "Frankincense Essential Oil",
+    image: "https://res.cloudinary.com/du9af99hf/image/upload/v1733744456/assets/images/product_images/cxdbtniyv1xirapp0zvm.webp",
+    price: 14.99,
+  },
+  {
+    id: 8,
+    name: "Orange Essential Oil",
+    image: "https://res.cloudinary.com/du9af99hf/image/upload/v1733744455/assets/images/product_images/sol0nmsuy8gw8u2j4km7.webp",
+    price: 7.99,
+  },
+  {
+    id: 9,
+    name: "Ylang Ylang Essential Oil",
+    image: "https://res.cloudinary.com/du9af99hf/image/upload/v1733744454/assets/images/product_images/jdirdxkfunopndattzdz.webp",
+    price: 15.99,
+  },
+  {
+    id: 10,
+    name: "Geranium Essential Oil",
+    image: "https://res.cloudinary.com/du9af99hf/image/upload/v1733744452/assets/images/product_images/vsuddzsfgicnsiqomxig.webp",
+    price: 13.49,
+  },
+  {
+    id: 11,
+    name: "Chamomile Essential Oil",
+    image: "https://res.cloudinary.com/du9af99hf/image/upload/v1733744450/assets/images/product_images/kaci5fzoj6mwc2npsrsg.webp",
+    price: 16.99,
+  },
+  {
+    id: 12,
+    name: "Clove Essential Oil",
+    image: "https://res.cloudinary.com/du9af99hf/image/upload/v1733744449/assets/images/product_images/fy9spvqgmxog04q5pfcp.webp",
+    price: 9.49,
+  },
+  {
+    id: 13,
+    name: "Basil Essential Oil",
+    image: "https://res.cloudinary.com/du9af99hf/image/upload/v1733744446/assets/images/product_images/vugim98qpot0o8hupa8v.jpg",
+    price: 12.49,
+  },
+  {
+    id: 14,
+    name: "Cedarwood Essential Oil",
+    image: "https://res.cloudinary.com/du9af99hf/image/upload/v1733744445/assets/images/product_images/p8cfy5ube4dm6uvzynxa.webp",
+    price: 10.49,
+  },
+  {
+    id: 15,
+    name: "Patchouli Essential Oil",
+    image: "https://res.cloudinary.com/du9af99hf/image/upload/v1733744444/assets/images/product_images/ijkjxocsvauflobluk9v.webp",
+    price: 11.49,
+  },
+];
+
+
 const Container = styled.div`
   max-width: 1180px;
   margin: 0 auto;
@@ -139,7 +233,7 @@ const PaginationButton = styled.button`
 `;
 
 export default function ListProduits() {
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
   const [pageAcc, setPageAcc] = useState(1);
   const navigate = useNavigate();
   const produitsEnPage = 8;
