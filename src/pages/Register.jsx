@@ -4,24 +4,32 @@ import api, { getCSRFToken } from "../api/auth";
 // import bgImage from "./assets/bg.png";
 
 function Register() {
-  const [username, serUsername] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [password_confirmation , setPassword_confirmation ] = useState("");
+  const [password_confirmation, setPassword_confirmation] = useState("");
+  const [adresse, setAdresse] = useState("");
+  const [errors, setErrors] = useState([]);
 
   const register = async (e) => {
     e.preventDefault();
     await getCSRFToken();
     try {
       const respnse = await api.post("/register", {
-        name: username,
+        first_name: firstName,
+        last_name: lastName,
         email: email,
+        address: adresse,
         password: password,
-        password_confirmation : password_confirmation ,
+        password_confirmation: password_confirmation,
       });
       console.log(respnse.data);
+      response.status === 204 && navigate("/account");
     } catch (error) {
-      console.error(error);
+      if (error.response.status === 422) {
+        setErrors(error.response.data.errors);
+      }
     }
   };
 
@@ -42,11 +50,26 @@ function Register() {
             <input
               className="w-full p-2 rounded-lg bg-white bg-opacity-20 text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-green-800"
               type="text"
-              placeholder="Username"
-              value={username}
-              onChange={(e) => serUsername(e.target.value)}
+              placeholder="Prenom"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
             />
           </div>
+          {errors.firstName && (
+            <span className="text-red-300">{errors.first_name[0]}</span>
+          )}
+          <div className="mb-4">
+            <input
+              className="w-full p-2 rounded-lg bg-white bg-opacity-20 text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-green-800"
+              type="text"
+              placeholder="Nom"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
+          </div>
+          {errors.firstName && (
+            <span className="text-red-300">{errors.last_name[0]}</span>
+          )}
           <div className="mb-4">
             <input
               className="w-full p-2 rounded-lg bg-white bg-opacity-20 text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-green-800"
@@ -56,6 +79,9 @@ function Register() {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
+          {errors.email && (
+            <span className="text-red-300">{errors.email[0]}</span>
+          )}
           <div className="mb-4">
             <input
               className="w-full p-2 rounded-lg bg-white bg-opacity-20 text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-green-800"
@@ -65,6 +91,9 @@ function Register() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
+          {errors.password && (
+            <span className="text-red-300">{errors.password[0]}</span>
+          )}
           <div className="mb-4">
             <input
               className="w-full p-2 rounded-lg bg-white bg-opacity-20 text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-green-800"
@@ -72,6 +101,20 @@ function Register() {
               placeholder="Confirm Password"
               value={password_confirmation}
               onChange={(e) => setPassword_confirmation(e.target.value)}
+            />
+          </div>
+          {errors.password_confirmation && (
+            <span className="text-red-300 mb-3">
+              {errors.password_confirmation[0]}
+            </span>
+          )}
+          <div className="mb-4">
+            <input
+              className="w-full p-2 rounded-lg bg-white bg-opacity-20 text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-green-800"
+              type="text"
+              placeholder="Adresse"
+              value={adresse}
+              onChange={(e) => setAdresse(e.target.value)}
             />
           </div>
           <button
