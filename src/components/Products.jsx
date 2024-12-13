@@ -1,140 +1,150 @@
-import React, { useState } from "react";
-import oilImg from "../assets/secondimg.jpg";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { ShoppingCart, Loader2, AlertTriangle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import api from "../api/auth";
+import RecommendedProducts from "./Recommended";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
-const OilProductCard = () => {
+const ProductDetails = () => {
+  const { id } = useParams();
+  const [product, setProduct] = useState(null);
+  // const [error, setError] = useState(null);
+  // const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
-  const [activeTab, setActiveTab] = useState("description");
 
-  const incrementQuantity = () => setQuantity(quantity + 1);
-  const decrementQuantity = () => {
-    if (quantity > 1) setQuantity(quantity - 1);
+  // useEffect(() => {
+  //   const fetchProduct = async () => {
+  //     try {
+  //       setLoading(true);
+  //       const response = await api.get(`/api/products/${id}`);
+  //       setProduct(response.data);
+  //     } catch (err) {
+  //       setError(err.response?.data?.message || "An error occurred");
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchProduct();
+  // }, [id]);
+
+  const handleAddToCart = () => {
+    console.log(`Added ${quantity} of ${product.name} to cart`);
   };
 
+  const updateQuantity = (change) => {
+    setQuantity((prev) => {
+      const newQuantity = prev + change;
+      return newQuantity > 0 && newQuantity <= product.quantity
+        ? newQuantity
+        : prev;
+    });
+  };
+
+  // if (loading) {
+  //   return (
+  //     <div className="flex justify-center items-center h-screen">
+  //       <Loader2 className="animate-spin text-blue-500" size={48} />
+  //     </div>
+  //   );
+  // }
+
+  // if (error) {
+  //   return (
+  //     <div className="flex justify-center items-center h-screen">
+  //       <Card className="w-96 border-red-500">
+  //         <CardHeader className="bg-red-50 border-b border-red-200">
+  //           <div className="flex items-center text-red-600">
+  //             <AlertTriangle className="mr-2" />
+  //             <span className="font-semibold">Error Loading Product</span>
+  //           </div>
+  //         </CardHeader>
+  //         <CardContent className="p-4">
+  //           <p className="text-red-700">{error}</p>
+  //         </CardContent>
+  //       </Card>
+  //     </div>
+  //   );
+  // }
+
   return (
-    <div className="p-6 bg-white shadow-lg rounded-lg w-11/12 max-w-6xl mx-auto mt-10">
-      <div className="flex flex-col lg:flex-row items-start">
-        
-        <div className="flex-shrink-0">
-          <img
-            src={oilImg}
-            alt="Oil Product"
-            className="w-64 h-64 object-cover rounded-lg"
-          />
-        </div>
-
-        
-        <div className="flex flex-col items-start lg:ml-6 mt-4 lg:mt-0 w-full">
-          <h1 className="text-2xl font-bold mb-2">Huile Essentielle d'Argan</h1>
-          <p className="text-lg text-gray-600 mb-1">
-            Prix : <span className="text-teal-600 font-semibold">Rs. 250.00</span>
-          </p>
-          <p className="text-gray-500 mb-1">Quantité : 500 millilitres</p>
-          <p className="text-gray-500 mb-1">
-            Fournisseur : <span className="font-semibold">Bio Et Bien Etre</span>
-          </p>
-          <p className="text-gray-500 mb-1">Type : Huile Essentielle</p>
-          <p className="text-teal-600 font-bold">Disponibilité : En stock !</p>
-
-          
-          <div className="flex items-center mt-4">
-            <button
-              onClick={decrementQuantity}
-              className="px-3 py-1 bg-gray-100 text-gray-600 rounded-l hover:bg-gray-200"
-            >
-              -
-            </button>
-            <span className="px-4 py-1 border-t border-b border-gray-100 text-gray-600">
-              {quantity}
-            </span>
-            <button
-              onClick={incrementQuantity}
-              className="px-3 py-1 bg-gray-100 text-gray-600 rounded-r hover:bg-gray-200"
-            >
-              +
-            </button>
-          </div>
-
-          
-          <div className="flex justify-start gap-2 mt-6">
-            <button className="px-4 py-2 bg-pink-100 text-pink-600 text-sm rounded hover:bg-pink-200">
-              Acheter Maintenant
-            </button>
-            <button className="px-4 py-2 bg-green-100 text-green-600 text-sm rounded hover:bg-green-200">
-              Ajouter au Panier
-            </button>
-            <button className="px-4 py-2 bg-blue-100 text-blue-600 text-sm rounded hover:bg-blue-200">
-              Ajouter à la Liste
-            </button>
-          </div>
-
-          
-          <div className="flex gap-4 justify-start mt-6">
-            <button
-              className={`px-4 py-2 rounded ${
-                activeTab === "description"
-                  ? "bg-green-100 text-green-600"
-                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-              }`}
-              onClick={() => setActiveTab("description")}
-            >
-              Description
-            </button>
-            <button
-              className={`px-4 py-2 rounded ${
-                activeTab === "shipping"
-                  ? "bg-green-100 text-green-600"
-                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-              }`}
-              onClick={() => setActiveTab("shipping")}
-            >
-              Informations d'expédition
-            </button>
-            <button
-              className={`px-4 py-2 rounded ${
-                activeTab === "reviews"
-                  ? "bg-green-100 text-green-600"
-                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-              }`}
-              onClick={() => setActiveTab("reviews")}
-            >
-              Avis
-            </button>
-          </div>
-
-          
-          <div className="mt-4">
-            {activeTab === "description" && (
-              <p>
-                Cette huile essentielle d'argan est connue pour ses propriétés
-                hydratantes et nourrissantes. Idéale pour les soins de la peau et
-                des cheveux, elle est extraite de manière naturelle pour garantir
-                la meilleure qualité.
-              </p>
+    <>
+      <Navbar />
+      <div className="container mx-auto px-4 py-8 font-sans mt-20">
+        <Card className="grid md:grid-cols-2 gap-8 shadow-lg rounded-lg overflow-hidden">
+          <div className="relative">
+            <img
+              src={'https://res.cloudinary.com/du9af99hf/image/upload/v1733744462/assets/images/product_images/f8pyny7bqj973xngigwy.webp'}
+              alt={'jhkjhkj'}
+              className="w-full h-[500px] object-cover"
+            />
+            {50 <= 5 && (
+              <Badge variant="destructive" className="absolute top-4 right-4">
+                Low Stock
+              </Badge>
             )}
-            {activeTab === "shipping" && (
-              <p>
-                Livraison disponible dans tout le Maroc. Délais estimés : 3 à 5
-                jours ouvrables. Expédition gratuite pour les commandes
-                supérieures à Rs. 500.
+          </div>
+          <CardContent className="space-y-6 p-6">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900">
+                Huile Essentielle d'Argan
+              </h1>
+              <p className="text-gray-600 text-lg mt-2">
+                Huile précieuse extraite des noix d'arganier, riche en antioxydants et en vitamine E. Idéale pour la peau, les cheveux et les ongles.
               </p>
-            )}
-            {activeTab === "reviews" && (
+            </div>
+            <div className="flex items-center justify-between">
               <div>
-                <p>
-                  <strong>Sana :</strong> Excellent produit, je l'utilise
-                  depuis des mois !
+                <p className="text-2xl font-bold text-green-600">
+                  {120} DH
                 </p>
-                <p>
-                  <strong>Salma :</strong> Livraison rapide et huile de
-                  très bonne qualité.
+                <p className="text-gray-500 mt-1">
+                  In Stock: {50}
                 </p>
               </div>
-            )}
-          </div>
-        </div>
+              <div className="flex items-center space-x-4">
+                <div className="flex items-center border rounded-lg">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    onClick={() => updateQuantity(-1)}
+                    disabled={quantity <= 1}
+                    className="w-10 h-10"
+                  >
+                    -
+                  </Button>
+                  <span className="px-4 font-semibold text-lg">{quantity}</span>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    onClick={() => updateQuantity(1)}
+                    disabled={quantity >= 300}
+                    className="w-10 h-10"
+                  >
+                    +
+                  </Button>
+                </div>
+                <Button
+                  onClick={handleAddToCart}
+                  disabled={300 === 0}
+                  className="flex items-center gap-2 bg-blue-500 text-white hover:bg-blue-600 px-4 py-2 rounded-lg"
+                >
+                  <ShoppingCart size={20} />
+                  Add to Cart
+                </Button>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+        <RecommendedProducts />
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
-export default OilProductCard;
+export default ProductDetails;

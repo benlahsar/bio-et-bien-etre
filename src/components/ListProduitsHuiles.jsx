@@ -1,100 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { ShoppingCart, ChevronLeft, ChevronRight } from "lucide-react";
-
-const products = [
-  {
-    id: 1,
-    name: "Thrive",
-    price: 150,
-    image:
-      "https://res.cloudinary.com/du9af99hf/image/upload/v1733744490/assets/jutzfy3nxuzmj6totvde.avif",
-  },
-  {
-    id: 2,
-    name: "Mearom",
-    price: 80,
-    image:
-      "https://res.cloudinary.com/du9af99hf/image/upload/v1733744366/assets/bxvdjrlq01ngt0lobkfd.webp",
-  },
-  {
-    id: 3,
-    name: "Nature Et soin",
-    price: 200,
-    image:
-      "https://res.cloudinary.com/du9af99hf/image/upload/v1733744488/assets/qkvaqubqpgovby66xyby.webp",
-  },
-  {
-    id: 4,
-    name: "Now Essential Oils",
-    price: 120,
-    image:
-      "https://res.cloudinary.com/du9af99hf/image/upload/v1733744488/assets/cqrgg1eykpkk25a7rjwd.jpg",
-  },
-  {
-    id: 5,
-    name: "Saje",
-    price: 100,
-    image:
-      "https://res.cloudinary.com/du9af99hf/image/upload/v1733744490/assets/xgs6szxpbj2mqfszji7n.avif",
-  },
-  {
-    id: 6,
-    name: "Basilic Tropical",
-    price: 180,
-    image:
-      "https://res.cloudinary.com/du9af99hf/image/upload/v1733744374/assets/emfhta32sq57o6rxffei.jpg",
-  },
-  {
-    id: 7,
-    name: "Citronnele",
-    price: 160,
-    image:
-      "https://res.cloudinary.com/du9af99hf/image/upload/v1733744470/assets/tybgzwdd2hk3uyowzv8t.jpg",
-  },
-  {
-    id: 8,
-    name: "Fleur d'Orange",
-    price: 220,
-    image:
-      "https://res.cloudinary.com/du9af99hf/image/upload/v1733744377/assets/vpkplr0iyacy34tzrbzy.jpg",
-  },
-  {
-    id: 9,
-    name: "Houssance",
-    price: 90,
-    image:
-      "https://res.cloudinary.com/du9af99hf/image/upload/v1733744398/assets/vt4cdun7vbtmhexi6utq.avif",
-  },
-  {
-    id: 10,
-    name: "Huile En Vanille",
-    price: 250,
-    image:
-      "https://res.cloudinary.com/du9af99hf/image/upload/v1733744399/assets/o6y5d2gibmv11vacc6yu.webp",
-  },
-  {
-    id: 11,
-    name: "Jasmin",
-    price: 70,
-    image:
-      "https://res.cloudinary.com/du9af99hf/image/upload/v1733744478/assets/a7fyielvtf1mmuhdln7i.webp",
-  },
-  {
-    id: 12,
-    name: "Puressentielle",
-    price: 110,
-    image:
-      "https://res.cloudinary.com/du9af99hf/image/upload/v1733744486/assets/ohknlr6g3jhpzekuh21m.jpg",
-  },
-  {
-    id: 13,
-    name: "Test",
-    price: 110,
-    image:
-      "https://res.cloudinary.com/du9af99hf/image/upload/v1733744470/assets/tybgzwdd2hk3uyowzv8t.jpg",
-  },
-];
+import { useNavigate } from "react-router-dom";
+import api from "../api/auth";
+import { useCart } from "../context/CartContext";
 
 const Container = styled.div`
   max-width: 1180px;
@@ -140,6 +49,7 @@ const CartProduit = styled.div`
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s ease;
+  position: relative;
 
   &:hover {
     transform: scale(1.05);
@@ -153,8 +63,7 @@ const ImageContainer = styled.div`
 const ImageProduit = styled.img`
   width: 100%;
   height: 300px;
-  background-size: contain;
-  //background-color:lightgray;
+  object-fit: cover;
 `;
 
 const HoverBtn = styled.div`
@@ -220,7 +129,6 @@ const PaginationButton = styled.button`
   padding: 0.5rem 1rem;
   border: 1px solid #e2e8f0;
   border-radius: 0.375rem;
-  margin: 0;
   background-color: ${(props) => (props.active ? "#e2e8f0" : "white")};
   opacity: ${(props) => (props.disabled ? 0.5 : 1)};
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
@@ -231,26 +139,60 @@ const PaginationButton = styled.button`
 `;
 
 export default function ListProduits() {
-  const [PageAcc, setPageAcc] = useState(1);
-  const ProduitsEnPage = 8;
-  const nbrPages = Math.ceil(products.length / ProduitsEnPage);
+  const [products, setProducts] = useState([]);
+  const [pageAcc, setPageAcc] = useState(1);
+  const navigate = useNavigate();
+  const produitsEnPage = 8;
+  const nbrPages = Math.ceil(products.length / produitsEnPage);
 
-  const idProduitF = PageAcc * ProduitsEnPage;
-  const idProduitI = idProduitF - ProduitsEnPage;
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await api.get("/api/products");
+        setProducts(response.data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  // const addToCart = async (product) => {
+  //   try {
+  //     const response = await api.post("/api/cart", {
+  //       id: product.id,
+  //       name: product.name,
+  //       price: product.price,
+  //       image: product.image,
+  //       quantity: 1,
+  //     });
+  //     console.log("Added to cart:", response.data);
+  //   } catch (error) {
+  //     console.error("Error adding to cart:", error);
+  //   }
+  // };
+  const { addToCart } = useCart();
+
+  const handleAddToCart = (product) => {
+    addToCart(product);
+  };
+  const idProduitF = pageAcc * produitsEnPage;
+  const idProduitI = idProduitF - produitsEnPage;
   const produitAcc = products.slice(idProduitI, idProduitF);
 
-  const paginate = (NumPage) => setPageAcc(NumPage);
+  const paginate = (numPage) => setPageAcc(numPage);
 
   return (
     <Container>
-      <Titre> Nos Huiles</Titre>
+      <Titre>Nos Huiles</Titre>
       <AffProduit>
         {produitAcc.map((produit) => (
-          <CartProduit key={produit.id}>
+          <CartProduit key={produit.id} onClick={() => navigate(`/huile-produit`)}>
             <ImageContainer>
               <ImageProduit src={produit.image} alt={produit.name} />
               <HoverBtn>
-                <Ajouter_panier>
+                <Ajouter_panier onClick={() => handleAddToCart(produit)}>
                   <ShoppingCart size={20} />
                   Add to Cart
                 </Ajouter_panier>
@@ -266,8 +208,8 @@ export default function ListProduits() {
       {nbrPages > 1 && (
         <PaginationContainer>
           <PaginationButton
-            onClick={() => paginate(PageAcc - 1)}
-            disabled={PageAcc === 1}
+            onClick={() => paginate(pageAcc - 1)}
+            disabled={pageAcc === 1}
           >
             <ChevronLeft size={20} />
           </PaginationButton>
@@ -275,15 +217,14 @@ export default function ListProduits() {
             <PaginationButton
               key={nbr}
               onClick={() => paginate(nbr)}
-              active={PageAcc === nbr}
+              active={pageAcc === nbr}
             >
               {nbr}
             </PaginationButton>
           ))}
-
           <PaginationButton
-            onClick={() => paginate(PageAcc + 1)}
-            disabled={PageAcc === nbrPages}
+            onClick={() => paginate(pageAcc + 1)}
+            disabled={pageAcc === nbrPages}
           >
             <ChevronRight size={20} />
           </PaginationButton>

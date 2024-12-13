@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import BlogPost from "./AffBlogs";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const BlogPosts = [
     {
@@ -113,6 +115,7 @@ function BlogPage() {
         display: flex;
         justify-content: space-between;
         padding: 10px;
+        margin-top: 80px;
         width: 95%;
     `;
 
@@ -167,6 +170,7 @@ function BlogPage() {
 
     return (
         <>
+        <Navbar />
             <BigContainer>
                 <ContainerL>
                     <h1>Recent articles</h1>
@@ -209,6 +213,7 @@ function BlogPage() {
                     ))}
                 </ContainerR>
             </BigContainer>
+            <Footer />
         </>
     );
 }

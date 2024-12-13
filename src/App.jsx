@@ -1,6 +1,6 @@
 import BlogPage from "./Blogs";
 import Contents from "./Content";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import ClientSpace from "./pages/ClientSpace";
 import MyAccount from "./pages/MyAccount";
 import MyFavourites from "./pages/MyFavourites";
@@ -10,12 +10,14 @@ import Register from "./pages/Register";
 import Home from "./pages/Home";
 import CustomerFeedback from "./components/CustomerFeedback";
 import Products from "./pages/Products";
+import ProductDetails from "./components/Products";
 import AboutUs from "./pages/AboutUs";
 import Admin from "./pages/AdminPage";
+import PaymentPage from "./pages/Payment";
 
 function App() {
   return (
-    <Router>
+    <>
       <Routes>
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/OuedSousse" element={<Contents.BlogContent />} />
@@ -33,10 +35,12 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/feedback" element={<CustomerFeedback />} />
         <Route path="/produits" element={<Products />} />
+        <Route path="/huile-produit" element={<ProductDetails />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/pay" element={<PaymentPage />} />
       </Routes>
-    </Router>
+    </>
   );
 }
 

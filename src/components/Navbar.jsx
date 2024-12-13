@@ -3,6 +3,7 @@ import { ShoppingCart, Heart, CircleUserRound } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { X } from "lucide-react";
 import api from "../api/auth";
+import { useCart } from "../context/CartContext";
 
 const Navbar = () => {
   // State for dropdowns
@@ -44,6 +45,7 @@ const Navbar = () => {
       console.log(error);
     }
   };
+  const { cart, removeFromCart } = useCart();
 
   const getUser = async () => {
     const { data } = await api.get("/api/user");
@@ -146,13 +148,14 @@ const Navbar = () => {
           onClick={() => setShowProductDetails(!showProductDetails)}
         >
           <ShoppingCart />
+          <span>({cart.length})</span>
         </a>
-        <a
+        {/* <a
           aria-label="Favorites"
           className="hover:text-amber-600 transition duration-200"
         >
           <Heart />
-        </a>
+        </a> */}
 
         {/* User Icon with Dropdown */}
         {user ? (
@@ -212,12 +215,25 @@ const Navbar = () => {
         )}
       </div>
       <div
-        className={`fixed top-24 right-0 w-80 h-[87%] rounded-xl bg-white shadow-lg z-50 p-6 transition-transform duration-300 ${
+        className={`fixed top-24 right-0 w-80 h-[87%] rounded-xl bg-white shadow-lg shadow-gray-400 z-50 p-6 transition-transform duration-300 ${
           showProductDetails ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="bg-white p-6 shadow-lg rounded-lg h-[40%] flex flex-col">
-          <div className="flex justify-between">
+        <div className="bg-white p-6 shadow-lg rounded-lg h-full flex flex-col overflow-y-scroll">
+        {cart.map((item) => (
+          <div key={item.id} className="my-4">
+            <img  src={item.image} alt={item.name} />
+            <div>
+              <p className="font-bold">{item.name}</p>
+              <p className="text-gray-500 ">Price: {item.price} DH</p>
+              <p className="text-gray-500 ">Quantity: {item.quantity}</p>
+              <button className="bg-red-500 text-white w-full py-2 rounded mt-5 hover:bg-red-600" onClick={() => removeFromCart(item.id)}>Remove</button>
+              <hr />
+            </div>
+          </div>
+        ))}
+        {cart.length === 0 && <p>Your cart is empty.</p>}
+          {/* <div className="flex justify-between">
             <h2 className="text-lg font-bold mb-4">Détails du produit</h2>
             <span
               className="cursor-pointer"
@@ -227,11 +243,6 @@ const Navbar = () => {
             </span>
           </div>
           <div className="flex items-center space-x-4">
-            {/* <img
-              src={img20}
-              alt="Produit"
-              className="w-16 h-16 object-cover rounded-md"
-            /> */}
             <div>
               <p className="font-bold">Nom du produit</p>
               <p>Prix : 100 MAD</p>
@@ -243,7 +254,7 @@ const Navbar = () => {
             className="bg-red-500 text-white w-full py-2 rounded mt-5 hover:bg-red-600"
           >
             Supprimer
-          </button>
+          </button> */}
         </div>
       </div>
     </nav>
