@@ -33,12 +33,23 @@ export default function MyAccount() {
             </h2>
             <form className="grid gap-6 md:grid-cols-2">
               <div>
-                <label className="block text-gray-600 mb-1">Name</label>
+                <label className="block text-gray-600 mb-1">First Name</label>
                 <input
                   type="text"
                   className="w-full border border-gray-300 rounded-lg p-3 focus:ring focus:ring-green-300 focus:outline-none"
                   placeholder="John Doe"
-                  value={user?.name}
+                  value={user?.first_name}
+                  readOnly
+                  disabled
+                />
+              </div>
+              <div>
+                <label className="block text-gray-600 mb-1">Last Name</label>
+                <input
+                  type="text"
+                  className="w-full border border-gray-300 rounded-lg p-3 focus:ring focus:ring-green-300 focus:outline-none"
+                  placeholder="John Doe"
+                  value={user?.last_name}
                   readOnly
                   disabled
                 />
@@ -92,15 +103,12 @@ export default function MyAccount() {
               Address Book
             </h2>
             <ul className="space-y-6">
-              {["Home Address", "Work Address"].map((label, index) => (
-                <li key={index} className="border p-4 rounded-lg">
+                <li className="border p-4 rounded-lg">
                   <div className="flex justify-between items-center">
                     <div>
-                      <p className="font-semibold text-gray-800">{label}</p>
+                      <p className="font-semibold text-gray-800">Adresse</p>
                       <p className="text-gray-600">
-                        {index === 0
-                          ? "123 Main St, Cityville, CA 12345"
-                          : "456 Business Rd, Metropolis, NY 67890"}
+                        {user?.address}
                       </p>
                     </div>
                     <button className="text-green-500 hover:underline">
@@ -108,7 +116,6 @@ export default function MyAccount() {
                     </button>
                   </div>
                 </li>
-              ))}
             </ul>
           </section>
         </main>

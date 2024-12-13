@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState([]);
 
   const navigate = useNavigate();
 
@@ -21,7 +22,9 @@ function Login() {
       console.log(response.status);
       response.status === 204 && navigate("/account");
     } catch (error) {
-      console.error(error);
+      if (error.response.status === 422) {
+        setErrors(error.response.data.errors);
+      }
     }
   };
 
@@ -55,6 +58,9 @@ function Login() {
               <AtSign />
             </i>
           </div>
+          {errors.email && (
+            <span className="text-red-300">{errors.email[0]}</span>
+          )}
           <div className="mb-4 relative">
             <input
               className="w-full p-2 rounded-lg bg-white bg-opacity-20 text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-green-800"
@@ -68,18 +74,16 @@ function Login() {
               <LockKeyhole />
             </i>
           </div>
+          {errors.password && (
+            <span className="text-red-300 mb-3">{errors.password[0]}</span>
+          )}
           <div className="flex justify-between items-center text-white text-sm mb-4">
-            <label className="flex items-center">
-              <input type="checkbox" className="mr-2" />
-              Remember me
-            </label>
             <a href="#" className="hover:underline hover:bg-green-90">
               Forgot password?
             </a>
           </div>
           <button
             className="w-full bg-green-700 hover:bg-green-900 text-white p-2 rounded-lg font-semibold transition"
-            // onClick={() => navigate("/account")}
           >
             Login
           </button>

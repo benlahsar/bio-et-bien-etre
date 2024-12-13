@@ -4,13 +4,13 @@ import React from "react";
 const Sidebar = ({ isVisible, toggleSidebar }) => {
   return (
     <aside
-      className={`fixed overflow-y-auto md:relative top-0 left-0 h-full md:h-auto md:w-1/4 bg-card p-6 border border-border shadow-lg mt-20 z-50 transform transition-transform ${
+      className={`fixed overflow-scroll md:relative top-0 left-0 h-full md:h-auto md:w-1/4 bg-card p-6 border border-border shadow-lg mt-20 z-50 transform transition-transform ${
         isVisible ? "translate-x-0" : "-translate-x-full"
       } md:translate-x-0`}
     >
       <button
         onClick={toggleSidebar}
-        className="absolute top-4 right-4 md:hidden bg-primary text-white p-2 rounded"
+        className="absolute top-4 right-4 md:hidden bg-red-600 text-white p-2 rounded"
       >
         <XIcon />
       </button>
@@ -94,7 +94,7 @@ const Sidebar = ({ isVisible, toggleSidebar }) => {
           />
         </div>
       </div>
-      <button className="mt-6 w-full bg-primary text-primary-foreground py-2 rounded-md hover:bg-yellow">
+      <button className="mt-6 w-full bg-green-700 text-primary-foreground py-2 rounded-md hover:bg-yellow">
         Clear All
       </button>
       {/* Other sidebar content */}

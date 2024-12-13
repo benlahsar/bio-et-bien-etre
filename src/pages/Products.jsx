@@ -17,7 +17,7 @@ export default function Products() {
         {/* Toggle button for small and medium devices */}
         <button
           onClick={toggleSidebar}
-          className="fixed top-24 left-4 w-20 md:hidden bg-primary text-white p-2 rounded z-50 flex"
+          className="fixed top-24 left-4 w-20 md:hidden bg-amber-600 text-white p-2 rounded z-50 flex shadow-md shadow-amber-700/50"
         >
           <Menu /> Menu
         </button>

@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import { ShoppingCart, Heart, CircleUserRound, ArrowDown  } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { ShoppingCart, Heart, CircleUserRound } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { X } from "lucide-react";
-
+import api from "../api/auth";
 
 const Navbar = () => {
   // State for dropdowns
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const [oilsDropdownOpen, setOilsDropdownOpen] = useState(false);
+  const [user, setUser] = useState(null);
 
   const navigate = useNavigate();
 
@@ -35,8 +36,28 @@ const Navbar = () => {
     setShowProductDetails(false);
   };
 
+  const logout = () => {
+    try {
+      const response = api.post("/logout");
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getUser = async () => {
+    const { data } = await api.get("/api/user");
+    setUser(data);
+  };
+
+  useEffect(() => {
+    if (!user) {
+      getUser();
+    }
+  }, [user, getUser]);
+
   return (
-    <nav className="bg-gradient-to-r from-emerald-400 via-amber-300 to-yellow-200 text-gray-800 p-4 flex justify-between items-center shadow-lg fixed top-0 left-0 right-0 z-50">
+    <nav className="bg-gradient-to-r from-emerald-400 via-amber-300 to-yellow-200 text-gray-800 p-4 flex justify-between items-center shadow-lg fixed top-0 left-0 right-0 z-[100]">
       {/* Logo */}
       <div className="flex items-center">
         <img
@@ -134,32 +155,61 @@ const Navbar = () => {
         </a>
 
         {/* User Icon with Dropdown */}
-        <div className="relative">
-          <button
-            onClick={toggleUserDropdown}
-            className="hover:text-amber-600 transition duration-200"
-          >
-            <CircleUserRound size={24} />
-          </button>
+        {user ? (
+          <div className="relative">
+            <button
+              onClick={toggleUserDropdown}
+              className="hover:text-amber-600 transition duration-200"
+            >
+              <CircleUserRound size={24} />
+            </button>
 
-          {/* User Dropdown Menu */}
-          {userDropdownOpen && (
-            <div className="absolute right-0 mt-2 w-40 bg-white shadow-lg rounded-lg py-2 z-10">
-              <a
-                className="block px-4 py-2 text-gray-800 hover:bg-emerald-100"
-                onClick={() => navigate("/login")}
-              >
-                Login
-              </a>
-              <a
-                className="block px-4 py-2 text-gray-800 hover:bg-emerald-100"
-                onClick={() => navigate("/register")}
-              >
-                Register
-              </a>
-            </div>
-          )}
-        </div>
+            {/* User Dropdown Menu */}
+            {userDropdownOpen && (
+              <div className="absolute right-0 mt-2 w-40 bg-white shadow-lg rounded-lg py-2 z-10">
+                <a
+                  className="cursor-pointer block px-4 py-2 text-gray-800 hover:bg-emerald-100"
+                  onClick={() => navigate("/account")}
+                >
+                  Profile
+                </a>
+                <a
+                  className="cursor-pointer block px-4 py-2 text-gray-800 hover:bg-emerald-100"
+                  onClick={() => logout()}
+                >
+                  Logout
+                </a>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="relative">
+            <button
+              onClick={toggleUserDropdown}
+              className="hover:text-amber-600 transition duration-200"
+            >
+              <CircleUserRound size={24} />
+            </button>
+
+            {/* User Dropdown Menu */}
+            {userDropdownOpen && (
+              <div className="absolute right-0 mt-2 w-40 bg-white shadow-lg rounded-lg py-2 z-10">
+                <a
+                  className="block px-4 py-2 text-gray-800 hover:bg-emerald-100"
+                  onClick={() => navigate("/login")}
+                >
+                  Login
+                </a>
+                <a
+                  className="block px-4 py-2 text-gray-800 hover:bg-emerald-100"
+                  onClick={() => navigate("/register")}
+                >
+                  Register
+                </a>
+              </div>
+            )}
+          </div>
+        )}
       </div>
       <div
         className={`fixed top-24 right-0 w-80 h-[87%] rounded-xl bg-white shadow-lg z-50 p-6 transition-transform duration-300 ${
