@@ -30,8 +30,14 @@ const NavbarWithCart = () => {
   return (
     <>
       {/* Barre de navigation */}
-      <nav className="p-4 flex justify-between items-center z-[100] fixed top-0 left-0 right-0 bg-primary text-white shadow-md">
-        {/* <img src={logo} alt="Mon Logo" className="h-10" /> */}
+
+      <nav className="p-4 flex justify-between items-center z-50 fixed top-0 left-0 right-0 bg-primary text-white shadow-md">
+        <img
+          src="src/assets/images/logo.png"
+          alt="Mon Logo"
+          className="h-12 w-auto rounded-lg shadow-sm"
+        />
+
         <ul className="hidden md:flex space-x-6 font-['Raleway'] text-xl">
           <li>
             <a className="hover:text-third" href="#home">
